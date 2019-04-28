@@ -16,7 +16,7 @@
       <login-form @login="login($event)"
                   v-if="!registering"></login-form>
       <login-form @login="register($event)"
-                  button-label="zarejestruj się"
+                  button-label="Zarejestruj się"
                   v-else></login-form>
     </div>
   </div>
@@ -27,11 +27,14 @@
     import LoginForm from "./LoginForm";
     import MeetingsPage from "./meetings/MeetingsPage";
 
+    //hash jest w jedna strone
+    //admin tez widzi tylko hashe
     export default {
         components: {LoginForm, MeetingsPage},
         data() {
             return {
-                authenticatedUsername: ""
+                authenticatedUsername: "",
+                registering: false
             };
         },
         methods: {
@@ -41,14 +44,16 @@
             logout() {
                 this.authenticatedUsername = '';
             },
+            //usluga wysyla do backendu
             register(user) {
                 this.$http.post('participants', user)
-                    .then(response => {
+                    .then(response => {//kiedy serwer wykona
                     // udało się
                 })
-            .catch(response => {
-                    // nie udało sie
-                });
+                    .catch(response => {
+                            // nie udało sie
+                            alert("User już istnieje")
+                        });
             }
         }
     };
