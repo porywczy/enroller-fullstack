@@ -5,6 +5,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 
+//default: all za murem
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Override

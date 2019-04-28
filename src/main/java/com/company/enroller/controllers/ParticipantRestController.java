@@ -13,6 +13,7 @@ import java.util.Collection;
 @RequestMapping("/api/participants")
 public class ParticipantRestController {
 
+    //deklaratywnie ze potrzebuje usluge
     @Autowired
     ParticipantService participantService;
 
