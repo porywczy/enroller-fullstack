@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1>
+      <!--logo aplikacji.-->
       <img src="./assets/logo.svg" alt="Enroller" class="logo">
       System do zapisów na zajęcia
     </h1>
@@ -12,6 +13,7 @@
     </div>
     <div v-else>
       <button @click="registering = false" :class="registering ? 'button-outline' : ''">Loguję się</button>
+      <!--przycisk "zarejestruj", który pokaże formularz rejestracji.-->
       <button @click="registering = true" :class="!registering ? 'button-outline' : ''">Rejestruję się</button>
       <div :class="'alert alert-' + (this.isError ? 'error' : 'success')" v-if="message">{{ message }}</div>
       <login-form @submit="registering ? register($event) : login($event)" :button-label="loginButtonLabel"></login-form>
@@ -36,6 +38,7 @@
             };
         },
         methods: {
+            // obsługi rejestracji użytkownika po wysłaniu formularza
             register(user) {
                 this.clearMessage();
                 this.$http.post('participants', user)
@@ -53,8 +56,16 @@
                         this.storeAuth(user.login, token);
                     })
                     .catch(() => this.failure('Logowanie nieudane.'));
+                // sprawdź, czy od razu po zalogowaniu możesz pobrać listę spotkań:
+                this.$http.get('meetings').then(response => console.log(response.body));
             },
+            // pokazywał stronę po zalogowaniu tylko wtedy, gdy backend zwróci token (logowanie udane).
+            // W przeciwnym razie wyświetl komunikat o błędzie.
+            // here?
             storeAuth(username, token) {
+                // Po zalogowaniu przejmij token i skonfiguruj vue-resource
+                // tak, by przy każdym następnym requeście wysyłał nagłówek
+                // Authorization z wartością Bearer JWT_TOKEN.
                 this.authenticatedUsername = username;
                 Vue.http.headers.common.Authorization = 'Bearer ' + token;
                 localStorage.setItem('username', username);
@@ -62,6 +73,7 @@
             },
             logout() {
                 this.authenticatedUsername = '';
+                // Przy wylogowaniu się wyczyść zapamiętany token.
                 delete Vue.http.headers.common.Authorization;
                 localStorage.clear();
             },
@@ -78,6 +90,8 @@
             }
         },
         mounted() {
+            // Wykorzystaj localStorage by zapamiętać token i login
+            // zalogowanego użytkownika pomiędzy odświeżeniami strony.
             const username = localStorage.getItem('username');
             const token = localStorage.getItem('token');
             if (username && token) {
@@ -86,6 +100,7 @@
                 this.$http.get(`participants/${username}`).catch(() => this.logout());
             }
         },
+        // komponent pozwalający na rejestrację użytkownika
         computed: {
             loginButtonLabel() {
                 return this.registering ? 'Zarejestruj się' : 'Zaloguj się';

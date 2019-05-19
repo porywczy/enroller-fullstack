@@ -13,6 +13,9 @@ public class App {
         SpringApplication.run(App.class, args);
     }
 
+    //interfejs PasswordEncoder
+    //implementacja BCryptPasswordEncoder
+    //Zarejestruj w kontenerze IoC odpowiedniego beana (mapującego wspomniany interfejs na wspomnianą implementację)
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

@@ -13,6 +13,7 @@ public class ParticipantService {
 
     DatabaseConnector connector;
 
+    //Wstrzyknij swojego PasswordEncodera do usługi obsługującej funkcjonalność dodawania nowego użytkownika (Participant).
     @Autowired
     PasswordEncoder passwordEncoder;
 
@@ -29,6 +30,7 @@ public class ParticipantService {
     }
 
     public Participant add(Participant participant) {
+        //Użyj wstrzykniętej zależności by zahashować hasło użytkownika przed jego dodaniem do bazy
         String hashedPassword = passwordEncoder.encode(participant.getPassword());
         participant.setPassword(hashedPassword);
         Transaction transaction = connector.getSession().beginTransaction();

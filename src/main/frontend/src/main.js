@@ -4,6 +4,8 @@ import VueResource from "vue-resource";
 
 Vue.use(VueResource);
 
+// Skonfiguruj nową zależność
+// ustaw prefix dla wszystkich żądań taki jak w backendzie: /api.
 Vue.http.options.root = '/api';
 
 new Vue({

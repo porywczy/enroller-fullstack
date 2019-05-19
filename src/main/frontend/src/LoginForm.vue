@@ -2,6 +2,7 @@
   <form @submit.prevent="enter()">
     <label>Login</label>
     <input type="text" v-model="user.login">
+    <!--pole pozwalające na podanie hasła w formularzu logowania.-->
     <label>Hasło</label>
     <input type="password" v-model="user.password">
     <button type="submit">{{ labelOfTheButton }}</button>

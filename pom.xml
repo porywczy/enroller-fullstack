@@ -71,11 +71,13 @@
             <artifactId>antlr</artifactId>
             <version>2.7.7</version>
         </dependency>
+        <!--hashowanie haseł. I przyda się zaraz do autentykacji i autoryzacji!-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
             <version>2.0.2.RELEASE</version>
         </dependency>
+        <!--bibliotekę dodającą wsparcie dla JWT-->
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
@@ -101,6 +103,9 @@
                     <check/>
                 </configuration>
             </plugin>
+            <!--odpowiedzialny za pobranie Node JS do projektu,-->
+            <!--pobranie zależności z NPM podczas mvn install i-->
+            <!--zbudowanie aplikacji za pomocą komendy npm run build przy budowaniu archiwum war aplikacji.-->
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
@@ -144,6 +149,8 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--odpowiedzialny za skopiowanie zbudowanej aplikacji frontendowej do katalogu-->
+            <!--src/main/resources/public, czyli katalogu skąd Spring Boot domyślnie serwuje statyczne pliki.-->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>

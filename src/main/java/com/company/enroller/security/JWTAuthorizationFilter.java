@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
+//filtr requestów, który odczyta token JWT z nagłówka i
+//po zweryfikowaniu go powiadomi aplikację o poprawnej autentykacji za pomocą tokenu.
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     private static final String HEADER_NAME = "Authorization";
     private static final String TOKEN_PREFIX = "Bearer ";

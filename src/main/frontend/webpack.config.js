@@ -75,6 +75,10 @@ module.exports = {
         },
         extensions: ['*', '.js', '.vue', '.json']
     },
+    // konfiguracja dev-servera zmieniającą port z 8080 na 8088 oraz
+    // konfigurację proxy, która kieruje wszystkie żądania wykonane na adres localhost:8088/api
+    // do serwera ze Spring Boot localhost:8080/api.
+    // Umożliwia to uruchomienie dev serwera tak jak wcześniej (wsparcie live reload) i rozwiązuje problemy z CORS.
     devServer: {
         historyApiFallback: true,
         noInfo: true,

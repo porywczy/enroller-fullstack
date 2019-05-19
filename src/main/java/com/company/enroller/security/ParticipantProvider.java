@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 
+//klasę pozwalającą na ładowanie użytkowników przez system autentykacji Springa
 @Service
 public class ParticipantProvider implements UserDetailsService {
     @Autowired

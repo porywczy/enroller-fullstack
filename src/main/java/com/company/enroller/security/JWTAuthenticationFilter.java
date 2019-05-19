@@ -23,6 +23,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
+//filtr requestów, który wystawi token JWT gdy klient prześle poprawne dane logowania:
 public class JWTAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
     private AuthenticationManager authenticationManager;
     private final String secret;

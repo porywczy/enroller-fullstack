@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 
+//Jednolity prefix do endpointów restowych umożliwia łatwe odróżnienie
+// części frontendowej aplikacji od części backendowej, gdy używamy aplikacyjnych adresów URL.
 @RestController
 @RequestMapping("/api/meetings")
 public class MeetingRestController {
