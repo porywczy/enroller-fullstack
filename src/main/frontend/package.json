@@ -12,8 +12,6 @@
   "dependencies": {
     "milligram": "^1.3.0",
     "vue": "^2.5.11",
-//    zależność frontendową vue-resource.
-//    biblioteka opakowująca obsługę asynchronicznych wywołań (AJAX) dla frameworka Vue.
     "vue-resource": "^1.5.1"
   },
   "browserslist": [

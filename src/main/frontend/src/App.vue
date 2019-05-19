@@ -3,7 +3,7 @@
     <h1>
       <!--logo aplikacji.-->
       <img src="./assets/logo.svg" alt="Enroller" class="logo">
-      System do zapisów na zajęcia
+      System do zapisów na zajęcia aaa
     </h1>
     <div v-if="authenticatedUsername">
       <h2>Witaj {{ authenticatedUsername }}!
